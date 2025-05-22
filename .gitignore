@@ -1,5 +1,17 @@
 # Ignore Gradle project-specific cache directory
 .gradle
+**/build/
+
+#Vsual Studio Code
+.vscode/
 
 # Ignore Gradle build output directory
 build
+
+# Ignore screenshots
+screenshots
+
+# Portable Network Graphics
+*.png
+
+!src/**/build/
