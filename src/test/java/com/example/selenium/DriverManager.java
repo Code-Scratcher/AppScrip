@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DriverManager {
-    private static final Logger logger = LoggerFactory.getLogger(DriverManager.class);
+    private static final Logger log = LoggerFactory.getLogger(DriverManager.class);
     private static WebDriver driver;
 
     private DriverManager() {
@@ -22,10 +22,10 @@ public class DriverManager {
             // Additional recommended options for stability
             options.addArguments("--no-sandbox");
             options.addArguments("--disable-dev-shm-usage");            driver = new ChromeDriver(options);
-            logger.info("Chrome driver initialized successfully");
+            log.info("Chrome driver initialized successfully");
             return driver;
         } catch (Exception e) {
-            logger.error("Failed to initialize Chrome driver: {}", e.getMessage());
+            log.error("Failed to initialize Chrome driver: {}", e.getMessage());
             throw e;
         }
     }
