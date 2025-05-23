@@ -14,7 +14,7 @@ public class DriverManager {
         // Private constructor to prevent instantiation
     }
 
-    public static WebDriver getDriver() {
+    public static WebDriver initializeDriver() {
         try {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
@@ -28,6 +28,13 @@ public class DriverManager {
             log.error("Failed to initialize Chrome driver: {}", e.getMessage());
             throw e;
         }
+    }
+
+    public static WebDriver getDriver() {
+        if (driver == null) {
+            driver = initializeDriver();
+        }
+        return driver;
     }
 
     public static void tearDown() {

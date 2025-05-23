@@ -3,6 +3,7 @@
 <suite name="Selenium Test Suite" verbose="2">    
     <listeners>
         <listener class-name="com.example.selenium.listeners.TestListener"/>
+        <listener class-name="com.example.selenium.listeners.ScreenshotListener"/>
     </listeners>
     <test name="Google Search Test">
         <classes>
