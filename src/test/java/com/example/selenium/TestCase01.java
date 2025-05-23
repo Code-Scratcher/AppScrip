@@ -1,6 +1,11 @@
 package com.example.selenium;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -23,21 +28,24 @@ public class TestCase01 {
         try {
             // Open the URL
             log.info("Test Case 01: Opening URL");
-            driver.get("https://www.example.com");
+            driver.get("https://www.google.com/");
 
-            log.info("Test Case 01: Verifying page title");
-            String expectedTitle = "Example Domain";
-            String actualTitle = driver.getTitle();
-            log.info("Current page title: {}", actualTitle);
-            
-            log.info("Taking screenshot");
+            log.info("Test Case 01: Searching for keyword 'Open AI'");
+            String keywordToSearch = "Open AI";
+
+            WebElement searchBox = driver.findElement(By.xpath("//textarea[@class='gLFyf']"));
+            searchBox.sendKeys(keywordToSearch);
+            searchBox.sendKeys(Keys.ENTER);
+
+            WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
+            WebElement firstResult = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[contains(text(),'') and contains(@class,'LC20lb MBeuO DKV0Md')]")));
+            log.info("Test Case 01: Taking screenshot");
             if (true) {
                 ScreenshotUtil screenshotUtil = new ScreenshotUtil();
                 screenshotUtil.takeScreenshot(driver, "testCase01", "check");
             }
-            
-            Assert.assertEquals(actualTitle, expectedTitle, "Page title does not match!");
-            log.info("Title verification completed successfully");
+            Assert.assertTrue(firstResult.getText().contains("OpenAI"), "The first result does not contain 'OpenAI'");
+            log.info("Test Case 01: Search result verified successfully");
         } catch (Exception e) {
             log.error("Test failed: {}", e.getMessage());
             throw e;
