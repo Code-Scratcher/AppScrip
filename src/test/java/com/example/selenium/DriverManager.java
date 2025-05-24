@@ -19,10 +19,16 @@ public class DriverManager {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--start-maximized");
             options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--disable-blink-features=AutomationControlled");
             // Additional recommended options for stability
             options.addArguments("--no-sandbox");
-            options.addArguments("--disable-dev-shm-usage");            driver = new ChromeDriver(options);
+            options.addArguments("--disable-dev-shm-usage");    
+
+            driver = new ChromeDriver(options);
+
             log.info("Chrome driver initialized successfully");
+            
             return driver;
         } catch (Exception e) {
             log.error("Failed to initialize Chrome driver: {}", e.getMessage());
