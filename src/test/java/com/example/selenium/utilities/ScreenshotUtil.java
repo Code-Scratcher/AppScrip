@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 public class ScreenshotUtil {
     private static final Logger logger = LoggerFactory.getLogger(ScreenshotUtil.class);
     // Directory to save screenshots
-    private static final String screenShotDir = "screenshots";
+    private static final String screenShotDir = "test-output/screenshots";
     
     public ScreenshotUtil() {
         File screenShotDirFile = new File(screenShotDir);
