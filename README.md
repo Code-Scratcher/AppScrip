@@ -9,13 +9,21 @@ This is a demo project that serves as a reference template for creating new test
 │   └── test
 │       ├── java
 │       │   └── com.example.selenium
-│       │       ├── DriverManager.java        # WebDriver initialization and management
+│       │       ├── base
+│       │       │   └── DriverManager.java    # WebDriver initialization and management
 │       │       ├── listeners                 # TestNG listeners
 │       │       │   ├── TestListener.java     # Test execution logging
 │       │       │   └── ScreenshotListener.java # Screenshot capture on test events
+│       │       ├── pages                     # Page Object Model classes
+│       │       │   └── HomePage.java         # Google homepage elements and actions
+│       │       ├── tests                     # Test cases
+│       │       │   ├── TestCase01.java      # Google search test
+│       │       │   └── TestCase02.java      # Example test
 │       │       └── utilities                 # Utility classes
+│       │           └── ScreenshotUtil.java   # Screenshot capture utility
 │       └── resources
 │           └── testng.xml                    # TestNG configuration
+├── screenshots                               # Screenshot output directory
 ├── build.gradle                              # Gradle build configuration
 └── README.md
 ```
