@@ -10,6 +10,9 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import com.example.selenium.base.DriverManager;
+import com.example.selenium.pages.HomePage;
 import com.example.selenium.utilities.ScreenshotUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,9 +36,10 @@ public class TestCase01 {
             log.info("Test Case 01: Searching for keyword 'Open AI'");
             String keywordToSearch = "Open AI";
 
-            WebElement searchBox = driver.findElement(By.xpath("//textarea[@class='gLFyf']"));
-            searchBox.sendKeys(keywordToSearch);
-            searchBox.sendKeys(Keys.ENTER);
+            HomePage homepage = new HomePage(driver);
+            log.info("Test Case 01: Entering keyword in search box");
+            homepage.getSearchBoxWebElement().sendKeys(keywordToSearch);
+            homepage.getSearchBoxWebElement().sendKeys(Keys.ENTER);
 
             WebDriverWait wait = new WebDriverWait(driver, java.time.Duration.ofSeconds(10));
             WebElement firstResult = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h3[contains(text(),'') and contains(@class,'LC20lb MBeuO DKV0Md')]")));

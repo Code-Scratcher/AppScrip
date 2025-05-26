@@ -7,7 +7,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import com.example.selenium.DriverManager;
+import com.example.selenium.base.DriverManager;
 import com.example.selenium.utilities.ScreenshotUtil;
 
 public class ScreenshotListener implements ITestListener {
