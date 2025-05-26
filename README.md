@@ -63,6 +63,11 @@ gradlew.bat clean build
 ```bash
 gradlew.bat test
 ```
+Or
+
+```bash
+gradlew.bat clean test
+```
 
 ### Linux/macOS
 
@@ -91,6 +96,11 @@ chmod +x gradlew
 5. Run tests:
 ```bash
 ./gradlew test
+```
+Or
+
+```bash
+gradlew.bat clean test
 ```
 
 ## Test Execution
