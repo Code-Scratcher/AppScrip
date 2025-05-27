@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class HomePage {
     protected WebDriver driver;
@@ -14,7 +15,7 @@ public class HomePage {
     // Constructor to initialize elements with PageFactory
     public HomePage(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver, this); // This initializes all @FindBy elements
+        PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this); // This initializes all @FindBy elements
     }
 
     public WebElement getSearchBoxWebElement() {
